@@ -75,39 +75,38 @@ Laravel already makes it easy to perform authentication via traditional login fo
 Bellow i mentioned my postman requests...
 &nbsp;
 &nbsp;
-- http://127.0.0.1:8000/api/register
-&nbsp;
-&nbsp;
+- http://127.0.0.1:8000/api/register 
+--
 Method:- POST
-<br>
+--
 Payload:- 
-<br>
+
 {	"name":"Name",
     "email":"email@gmail.com",
     "password":"12345678"
 }
-&nbsp;
-&nbsp;
+--
+--
+
 - http://127.0.0.1:8000/api/authenticate
-&nbsp;
-&nbsp;
+--
 Method:- POST
-<br>
+--
 Payload:- 
-<br>
+--
 {   "email":"email@gmail.com",
     "password":"12345678"
 }
-&nbsp;
-&nbsp;
+--
+--
+
 - http://127.0.0.1:8000/api/user
-&nbsp;
-&nbsp;
+--
 Method:- GET
-<br>
+--
 Payload:- Key: Authorization Value: Bearer [insert your token]
-<br>
-&nbsp;
+--
+--
 <br>
 <br>
 <p align="center">You can change above api as you wish and according to the requirements.</p>
