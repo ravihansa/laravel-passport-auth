@@ -1,72 +1,113 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p align="center">Laravel Passport Auth App</p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## Laravel Passport?
 
-## About Laravel
+Laravel already makes it easy to perform authentication via traditional login forms, but what about APIs? APIs typically use tokens to authenticate users and do not maintain session state between requests. Laravel makes API authentication a breeze using Laravel Passport, which provides a full OAuth2 server implementation for your Laravel application in a matter of minutes. Passport is built on top of the League OAuth2 server that is maintained by Andy Millington and Simon Hamp.
+&nbsp;
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## How to setup this application?
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+1) After cloning the application, you need to install it's dependencies,  
+- cd laravel-passport-auth
+- composer install
+&nbsp;
+&nbsp;
+2) Then rename .env.example as .env and provide correct db details.
+&nbsp;
+&nbsp;
+3) After Generate the application key using following command,  
+- php artisan key:generate
+&nbsp;
+&nbsp;
+4) Migrate the application using following command,
+- php artisan migrate
+&nbsp;
+&nbsp;
+5) Create the encryption keys needed to generate secure access tokens,
+- php artisan passport:install
+&nbsp;
+&nbsp;
+6) Finally run the application using following command,
+- php artisan serve
+&nbsp;
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## How to create this application?
 
-## Learning Laravel
+1) Create laravel project,  
+- composer create-project --prefer-dist laravel/laravel laravel-passport-auth "5.8.*"
+&nbsp;
+&nbsp;
+2) Then install laravel passport package,  
+- composer require laravel/passport
+&nbsp;
+&nbsp;
+3) Create db connection and run migrations,  
+- php artisan migrate
+&nbsp;
+&nbsp;
+4) Generate keys,  
+- php artisan passport:install
+&nbsp;
+&nbsp;
+5) Add the Laravel\Passport\HasApiTokens trait to App\User model (Use my code).
+&nbsp;
+&nbsp;
+6) Next, call the Passport::routes method within the boot method of the Providers/AuthServiceProvider (Use my code).
+&nbsp;
+&nbsp;
+7) After, in config/auth.php configuration file, set the driver option of the api authentication guard to passport (Use my code). 
+&nbsp;
+&nbsp;
+8) Create UserController (Use my code),  
+- php artisan make:controller /API/UserController
+&nbsp;
+&nbsp;
+9) Create api routes (Use my code).
+&nbsp;
+&nbsp;
+10) Finally run the following command and check the application using Postman tool.
+- php artisan serve  
+&nbsp;
+&nbsp;
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## How to check application using Postman tool?
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1400 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Bellow i mentioned my postman requests...
+&nbsp;
+&nbsp;
+- http://127.0.0.1:8000/api/register
+&nbsp;
+&nbsp;
+Method:- POST
+<br>
+Payload:- 
+<br>
+{	"name":"Name",
+    "email":"email@gmail.com",
+    "password":"12345678"
+}
+&nbsp;
+&nbsp;
+- http://127.0.0.1:8000/api/authenticate
+&nbsp;
+&nbsp;
+Method:- POST
+<br>
+Payload:- 
+<br>
+{   "email":"email@gmail.com",
+    "password":"12345678"
+}
+&nbsp;
+&nbsp;
+- http://127.0.0.1:8000/api/user
+&nbsp;
+&nbsp;
+Method:- GET
+<br>
+Payload:- Key: Authorization Value: Bearer [insert your token]
+<br>
+&nbsp;
+<br>
+<br>
+<p align="center">You can change above api as you wish and according to the requirements.</p>
